@@ -6,8 +6,13 @@ const text = "у попа была собака, он её любил\n\
 в землю закопал\n\
 и надпись написал, что "
 
-function recursive_out() {
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function recursive_out() {
   process.stdout.write(text)
+  await sleep(200);
   recursive_out();
 }
 
