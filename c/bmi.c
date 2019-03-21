@@ -4,8 +4,7 @@
 char c;
 void getnumber(char* message, float* variable) {
   printf("%s", message);
-  scanf("%f", variable);
-  if (!(int)*variable) {
+  if (!(int)scanf("%f", variable)) {
     while((c = getchar()) != '\n' && c != EOF)
       /* discard */ ;
     getnumber("Should be a valid number, try again: ", variable);
