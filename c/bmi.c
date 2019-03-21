@@ -20,10 +20,9 @@ float bmi(float height, float weight) {
 char* judge(float bmi) {
   if (bmi >= 25)
     return "overweight";
-  else if (bmi < 18.5)
+  if (bmi < 18.5)
     return "underweight";
-  else
-    return "normal";
+  return "normal";
 }
 
 int main() {
