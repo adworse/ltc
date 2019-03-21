@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
-int getnumber(char* message, float* variable) {
+char c;
+void getnumber(char* message, float* variable) {
   printf("%s", message);
-  return (int)scanf("%f", variable);
-}
-
-int goodbye() {
-  fprintf(stderr, "Should be a valid number\n");
-  exit(1);
+  scanf("%f", variable);
+  if (!(int)*variable) {
+    while((c = getchar()) != '\n' && c != EOF)
+      /* discard */ ;
+    getnumber("Should be a valid number, try again: ", variable);
+  }
 }
 
 float bmi(float height, float weight) {
@@ -28,8 +28,8 @@ char* judge(float bmi) {
 int main() {
   float height, weight;
 
-  getnumber("Enter weight: ", &weight) || goodbye();
-  getnumber("Enter height: ", &height) || goodbye();
+  getnumber("Enter weight: ", &weight);
+  getnumber("Enter height: ", &height);
 
   printf("%s\n", judge(bmi(height, weight)));
 
