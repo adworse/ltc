@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char c;
 void getnumber(char* message, float* variable) {
+  char c;
   printf("%s", message);
-  if (!(int)scanf("%f", variable)) {
+  if (!scanf("%f", variable)) {
     while((c = getchar()) != '\n' && c != EOF)
       /* discard */ ;
     getnumber("Should be a valid number, try again: ", variable);
@@ -16,7 +16,7 @@ float bmi(float height, float weight) {
   return weight / (height * height);
 }
 
-char* judge(float bmi) {
+const char* judge(float bmi) {
   if (bmi >= 25)
     return "overweight";
   if (bmi < 18.5)
