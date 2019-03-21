@@ -1,8 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 float bmi(float height, float weight) {
   height /=100;
   return weight / (height * height);
+}
+
+void check(float value) {
+  if (!(int)roundf(value))
+  {
+    printf("Should be a valid number\n");
+    exit(1);
+  }
 }
 
 char* judge(float bmi) {
@@ -19,9 +29,11 @@ int main() {
 
   printf("Enter weight: ");
   scanf("%f", &weight);
+  check(weight);
 
   printf("Enter height: ");
   scanf("%f", &height);
+  check(height);
 
   printf("%s\n", judge(bmi(height, weight)));
 
