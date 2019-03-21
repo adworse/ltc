@@ -2,17 +2,19 @@
 #include <stdlib.h>
 #include <math.h>
 
+int getnumber(char* message, float* variable) {
+  printf("%s", message);
+  return (int)scanf("%f", variable);
+}
+
+int goodbye() {
+  fprintf(stderr, "Should be a valid number\n");
+  exit(1);
+}
+
 float bmi(float height, float weight) {
   height /=100;
   return weight / (height * height);
-}
-
-void check(float value) {
-  if (!(int)roundf(value))
-  {
-    printf("Should be a valid number\n");
-    exit(1);
-  }
 }
 
 char* judge(float bmi) {
@@ -27,13 +29,8 @@ char* judge(float bmi) {
 int main() {
   float height, weight;
 
-  printf("Enter weight: ");
-  scanf("%f", &weight);
-  check(weight);
-
-  printf("Enter height: ");
-  scanf("%f", &height);
-  check(height);
+  getnumber("Enter weight: ", &weight) || goodbye();
+  getnumber("Enter height: ", &height) || goodbye();
 
   printf("%s\n", judge(bmi(height, weight)));
 
